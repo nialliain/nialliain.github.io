@@ -1,3 +1,1 @@
-## bikerid.es
-
-Testing, testing.
+This is a placeholder.
