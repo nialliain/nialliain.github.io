@@ -1,1 +1,40 @@
-{'data': [{'R': 'Ian Walker', 'F': '16.15'}, {'R': 'Luke Allen', 'F': '17.42'}, {'R': 'George', 'F': '18.48'}, {'R': 'Toby Willis', 'F': '19.25'}, {'R': 'Ede Harrison', 'F': '20.57'}, {'R': 'jonathan', 'F': '21.01'}, {'R': 'foxrobinson', 'F': '21.50'}, {'R': 'Paul Mellon', 'F': '22.11'}, {'R': 'Callum Waddell', 'F': '33.12'}]}
+{
+  "data": [
+    {
+      "R": "Ian Walker",
+      "F": "16.15"
+    },
+    {
+      "R": "Luke Allen",
+      "F": "17.42"
+    },
+    {
+      "R": "George",
+      "F": "18.48"
+    },
+    {
+      "R": "Toby Willis",
+      "F": "19.25"
+    },
+    {
+      "R": "Ede Harrison",
+      "F": "20.57"
+    },
+    {
+      "R": "jonathan",
+      "F": "21.01"
+    },
+    {
+      "R": "foxrobinson",
+      "F": "21.50"
+    },
+    {
+      "R": "Paul Mellon",
+      "F": "22.11"
+    },
+    {
+      "R": "Callum Waddell",
+      "F": "33.12"
+    }
+  ]
+}
