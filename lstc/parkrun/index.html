@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>LSTC parkrun League</title>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,200,700&subset=latin,latin-ext" type="text/css">
-    <style>
-      body {
-        font-family: 'Raleway', sans-serif;
-        font-size: 15px;
-        color: #222222;
-    }
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
@@ -22,7 +14,7 @@
             "lengthChange": false,
             "searching": false,
             "paging": false,
-            "ajax": "https://s3.eu-west-2.amazonaws.com/bikerid.es/lstc/summary.json",
+            "ajax": "summary.json",
             "columns": [
                 { "data": "runner" },
                 { "data": "8" },
@@ -36,42 +28,44 @@
             "lengthChange": false,
             "searching": false,
             "paging": false,
-            "ajax": "https://s3.eu-west-2.amazonaws.com/bikerid.es/lstc/full.json",
+            "ajax": "full.json",
             "columns": [
+                { "data": "dt" },
                 { "data": "runner" },
                 { "data": "run" },
-                { "data": "dt" },
                 { "data": "ageGrade" },
                 { "data": "pb" }
             ],
-            "order": [[ 0, 'asc' ], [ 2, 'asc' ]],
+            "order": [[ 0, 'asc' ], [ 1, 'asc' ]],
             "bInfo" : false
         } );
     } );
 </script>
-<h3>Summary</h3>
-<table id="summary" class="display" style="width:100%;">
-  <thead>
-    <tr>
-      <th scope="col">Runner</th>
-      <th scope="col">August</th>
-      <th scope="col">September</th>
-      <th scope="col">Total</th>
-    </tr>
-  </thead>
-</table>
-<br />
-<h3>Full</h3>
-<table id="full" class="display" style="width:100%;">
-  <thead>
-    <tr>
-      <th scope="col">Runner</th>
-      <th scope="col">Run</th>
-      <th scope="col">Date</th>
-      <th scope="col">Age Grade</th>
-      <th scope="col">PB</th>
-    </tr>
-  </thead>
-</table>
+<main>
+    <h3>Summary</h3>
+    <table id="summary" class="display">
+        <thead>
+        <tr>
+            <th scope="col">Runner</th>
+            <th scope="col">August</th>
+            <th scope="col">September</th>
+            <th scope="col">Total</th>
+        </tr>
+        </thead>
+    </table>
+    <br />
+    <h3>Full</h3>
+    <table id="full" class="display">
+        <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Runner</th>
+            <th scope="col">Run</th>
+            <th scope="col">Age Grade</th>
+            <th scope="col">PB</th>
+        </tr>
+        </thead>
+    </table>
+</main>
 </body>
 </html>
