@@ -1,13 +1,25 @@
 <html>
-  <script src="https://unpkg.com/justgage@latest/dist/justgage.umd.js"></script>
   <head>
+    <script src="https://unpkg.com/justgage@latest/dist/justgage.umd.js"></script>
+    <style>
+        .container {
+            align-items: center;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+        }
+        .center {
+            height: 320px;
+            width: 320px;
+        }
+    </style>
     <title>ETA Charge Status</title>
   </head>
-  <body>
-    <div id="gauge-container" style="width: 400px; height: 320px;">
-    </div>
-    <script>
-
+<body>
+  <div class="container">
+    <div id="gauge-container" class="centre"></div>
+  </div>
+  <script>
 const config = {
   "id": 'gauge-container',
   "value": 0,
@@ -16,7 +28,7 @@ const config = {
   "decimals": 0,
   "symbol": "",
   "reverse": false,
-  "width": 400,
+  "width": 320,
   "height": 320,
   "relativeGaugeSize": false,
   "gaugeWidthScale": 1,
@@ -70,8 +82,8 @@ function loadLatestStatus(){
             return response.json();
         })
         .then(data => {
-            gauge.refresh(data['chargingStatus'])
             document.title = 'ETA Charge Status: ' + data['chargingStatus'] + '%'
+            gauge.refresh(data['chargingStatus'])
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
@@ -79,7 +91,8 @@ function loadLatestStatus(){
 }
 
 loadLatestStatus()
-setInterval(function() { loadLatestStatus() }, 120000);
+
+const interval = setInterval(function() { loadLatestStatus() }, 120000);
 
     </script>
   </body>
