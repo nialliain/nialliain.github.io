@@ -1,0 +1,86 @@
+<html>
+  <script src="https://unpkg.com/justgage@latest/dist/justgage.umd.js"></script>
+  <head>
+    <title>ETA Charge Status</title>
+  </head>
+  <body>
+    <div id="gauge-container" style="width: 400px; height: 320px;">
+    </div>
+    <script>
+
+const config = {
+  "id": 'gauge-container',
+  "value": 0,
+  "min": 0,
+  "max": 100,
+  "decimals": 0,
+  "symbol": "",
+  "reverse": false,
+  "width": 400,
+  "height": 320,
+  "relativeGaugeSize": false,
+  "gaugeWidthScale": 1,
+  "gaugeColor": "#edebeb",
+  "valueFontColor": "#010101",
+  "labelFontColor": "#b3b3b3",
+  "levelColors": [
+    "#ff3300",
+    "#ffcc00",
+    "#00ff66"
+  ],
+  "noGradient": false,
+  "showSectorColors": false,
+  "title": "",
+  "titleFontColor": "#010101",
+  "titleFontFamily": "Arial",
+  "titleFontWeight": "bold",
+  "titlePosition": "right",
+  "label": "Charging Status",
+  "minTxt": "",
+  "maxTxt": "",
+  "hideValue": false,
+  "hideMinMax": true,
+  "humanFriendly": false,
+  "formatNumber": false,
+  "donut": true,
+  "donutStartAngle": 90,
+  "differential": true,
+  "displayRemaining": false,
+  "pointer": false,
+  "targetLineColor": "#000000",
+  "targetLineWidth": 1.5,
+  "startAnimationTime": 700,
+  "startAnimationType": ">",
+  "refreshAnimationTime": 700,
+  "counter": false,
+  "showInnerShadow": false,
+  "shadowOpacity": 0.2,
+  "shadowSize": 5,
+  "shadowVerticalOffset": 3
+};
+
+const gauge = new JustGage(config);
+
+function loadLatestStatus(){
+    fetch('https://s3.eu-west-2.amazonaws.com/bikerid.es/meineta.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Charging Status: ' + data['chargingStatus'])
+            gauge.refresh(data['chargingStatus'])
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+}
+
+loadLatestStatus()
+setInterval(function() { loadLatestStatus() }, 120000);
+
+    </script>
+  </body>
+</html>
