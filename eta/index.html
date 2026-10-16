@@ -70,8 +70,8 @@ function loadLatestStatus(){
             return response.json();
         })
         .then(data => {
-            console.log('Charging Status: ' + data['chargingStatus'])
             gauge.refresh(data['chargingStatus'])
+            document.title = 'ETA Charge Status: ' + data['chargingStatus'] + '%'
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
